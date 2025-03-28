@@ -7,14 +7,13 @@
     Try changing "table" to "view" below
 */
 
-{{ config(materialized='table') }}
+{{ config(materialized='table',transient=false) }}
 
 with source_data as (
 
-
-    select 1 as id
+    select 1 as id,'SRK' as NAME,ID||'-'||NAME as Unique_key
     union all
-    select null as id
+    select 2 as id,'SRK' as NAME,ID||'-'||NAME
 
 )
 
